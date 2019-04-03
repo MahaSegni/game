@@ -9,9 +9,9 @@ int main()
 {
     int i=0;
     SDL_Init(SDL_INIT_VIDEO); // Initialisation de la SDL
-    SDL_Surface *ecran =NULL,*imageDeFond = NULL,*image=NULL,*image2=NULL,*image3=NULL,*image4=NULL,*image5=NULL,*image6=NULL;
+    SDL_Surface *ecran =NULL,*imageDeFond = NULL,*image=NULL,*image2=NULL,*image3=NULL,*image4=NULL,*image5=NULL,*image6=NULL,*image7=NULL;
     ecran=SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE); // Ouverture de la fenêtre
-    SDL_Rect positionFond,positionim,positionim2,positionim3,positionim4,positionim5;
+    SDL_Rect positionFond,positionim,positionim2,positionim3,positionim4,positionim5,positionim7;
     //bach yefhem les cordonnée
     SDL_WM_SetCaption("Menu", NULL);// esm l fenetre 
     
@@ -27,14 +27,17 @@ int main()
     positionim4.x =0 ;
     positionim4.y = 0 ;
     positionim5.x =0 ;
-    positionim5.y = 0 ;
+    positionim5.y = 200 ;
+    positionim7.x =0 ;
+    positionim7.y = 550 ;
     imageDeFond = IMG_Load("menu.gif");// hata wahda matech3el
     image= IMG_Load("play.jpg");// l play tech3el
     image2= IMG_Load("setting.jpg");//setting tech3el
     image3= IMG_Load("help.jpg");//l help tech3el
     image4= IMG_Load("exit.jpg");//l exit tech3el
-    image5= IMG_Load("khra.jpg");
-    image6= IMG_LoadBMP("back.bmp");
+   image5= IMG_Load("ini1.png");
+    image6= IMG_Load("background1.png");
+image7= IMG_Load("flech.png");
     SDL_Flip(ecran);// mise a jours
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)// initiliser mixer
     {
@@ -69,21 +72,24 @@ int main()
                     SDL_BlitSurface(image,NULL, ecran, &positionim);//l play tech3el
                     SDL_Flip(ecran);//mise a jours 
                     SDL_Delay(400);
-                    
-
-                    SDL_BlitSurface(image5,NULL, ecran, &positionim);
+        
+           SDL_BlitSurface(image6,NULL, ecran, &positionim3);
+ SDL_Flip(ecran);
+ SDL_Delay(400);
+                
+              SDL_BlitSurface(image5,NULL, ecran, &positionim5);
  SDL_Flip(ecran);
  SDL_Delay(400);
 
- if (( event.button.x >339 && event.button.y >331 && event.button.x < 513 && event.button.y <365)||( event.button.x >339 && event.button.y >393 && event.button.x < 513 && event.button.y <427)) //les cordonnee win bch tenzel b souris(cordonnee mtaa bouton play)
-                {
+    SDL_Surface *score = NULL;
+    SDL_Rect  positionscore;
+    positionscore.x = 0;
+    positionscore.y = 0;
+    SDL_Init(SDL_INIT_VIDEO);
+score=IMG_Load("0.png");
+SDL_BlitSurface(score, NULL, ecran, &positionscore);
 
-           SDL_BlitSurface(image6,NULL, ecran, &positionim);
- SDL_Flip(ecran);
- SDL_Delay(400);}
-                
-
-                if ( event.button.x >60 && event.button.y >365 && event.button.x <230 && event.button.y <395)
+                 if ( event.button.x >60 && event.button.y >365 && event.button.x <230 && event.button.y <395)
                 { Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image2,NULL, ecran, &positionim2);//settings tech3el
                     SDL_Flip(ecran);
@@ -226,7 +232,7 @@ int main()
                 break;
             }
         }
-          
+          }
         SDL_Flip(ecran);//mise a jours
     }
 
