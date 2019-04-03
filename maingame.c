@@ -26,15 +26,15 @@ int main()
     positionim3.y = 0 ;
     positionim4.x =0 ;
     positionim4.y = 0 ;
-positionim5.x =0 ;
+    positionim5.x =0 ;
     positionim5.y = 0 ;
     imageDeFond = IMG_Load("menu.gif");// hata wahda matech3el
-    image= IMG_Load("play.gif");// l play tech3el
-    image2= IMG_Load("setting.gif");//setting tech3el
-    image3= IMG_Load("help.gif");//l help tech3el
-    image4= IMG_Load("exit.gif");//l exit tech3el
-image5= IMG_Load("khra.jpg");
-image6= IMG_Load("setting.jpg");
+    image= IMG_Load("play.jpg");// l play tech3el
+    image2= IMG_Load("setting.jpg");//setting tech3el
+    image3= IMG_Load("help.jpg");//l help tech3el
+    image4= IMG_Load("exit.jpg");//l exit tech3el
+    image5= IMG_Load("khra.jpg");
+    image6= IMG_LoadBMP("back.bmp");
     SDL_Flip(ecran);// mise a jours
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1)// initiliser mixer
     {
@@ -75,19 +75,20 @@ image6= IMG_Load("setting.jpg");
  SDL_Flip(ecran);
  SDL_Delay(400);
 
-                }
+ if (( event.button.x >339 && event.button.y >331 && event.button.x < 513 && event.button.y <365)||( event.button.x >339 && event.button.y >393 && event.button.x < 513 && event.button.y <427)) //les cordonnee win bch tenzel b souris(cordonnee mtaa bouton play)
+                {
+
+           SDL_BlitSurface(image6,NULL, ecran, &positionim);
+ SDL_Flip(ecran);
+ SDL_Delay(400);}
+                
 
                 if ( event.button.x >60 && event.button.y >365 && event.button.x <230 && event.button.y <395)
                 { Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image2,NULL, ecran, &positionim2);//settings tech3el
                     SDL_Flip(ecran);
-                    SDL_Delay(400);
-                   
-
-                    SDL_BlitSurface(image6,NULL, ecran, &positionim2);//settings tech3el
-                    SDL_Flip(ecran);
-                    SDL_Delay(400);
-                   
+                    SDL_Delay(500);
+                                           
                 }
                 if ( event.button.x >60 && event.button.y >430 && event.button.x < 230 && event.button.y <485)
 
@@ -138,33 +139,33 @@ image6= IMG_Load("setting.jpg");
                     i=1;
                 }
                 if(i==1)
-                {
+                {Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image,NULL, ecran, &positionim);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-                    Mix_PlayChannel(1, MB, 0);
+                    
                 }
                 if(i==2)
-                {
+                {Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image2,NULL, ecran, &positionim2);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-                    Mix_PlayChannel(1, MB, 0);
+                    
                 }
                 if(i==3)
-                {
+                {Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image3,NULL, ecran, &positionim3);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-Mix_PlayChannel(1, MB, 0);
+
 
                 }
                 if(i==4)
-                {
+                {Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image4,NULL, ecran, &positionim4);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-Mix_PlayChannel(1, MB, 0);
+
                 }
                 
                 break;
@@ -179,27 +180,41 @@ Mix_PlayChannel(1, MB, 0);
                     i=4;
                 }
                 if(i==1)
-                {
+                { Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image,NULL, ecran, &positionim);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-                    Mix_PlayChannel(1, MB, 0);
+                   
                 }
                 if(i==2)
-                {
+                {Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image2,NULL, ecran, &positionim2);
                     SDL_Flip(ecran);
                     SDL_Delay(500);
-                    Mix_PlayChannel(1, MB, 0);
+                    
                 }
                 if(i==3)
-                {
+                {   Mix_PlayChannel(1, MB, 0);
                     SDL_BlitSurface(image3,NULL, ecran, &positionim3);
                     SDL_Flip(ecran);
                     SDL_Delay(500) ;  
-                    Mix_PlayChannel(1, MB, 0);
+                 
                 }
                 if(i==4)
+                {   Mix_PlayChannel(1, MB, 0);
+                    SDL_BlitSurface(image4,NULL, ecran, &positionim4);
+                    SDL_Flip(ecran);
+                    SDL_Delay(500);
+                   
+                }
+  if(i==5)
+                { Mix_PlayChannel(1, MB, 0);
+                    SDL_BlitSurface(image4,NULL, ecran, &positionim4);
+                    SDL_Flip(ecran);
+                    SDL_Delay(500);
+                   
+                }
+  if(i==6)
                 {
                     SDL_BlitSurface(image4,NULL, ecran, &positionim4);
                     SDL_Flip(ecran);
