@@ -1,0 +1,10 @@
+prog:2.o qq.o
+	gcc 2.o qq.o -o prog -lSDL -lSDL_image -lSDL_mixer -g
+
+
+2.o:2.c
+	gcc -c 2.c -lSDL -lSDL_image -g
+
+qq.o:qq.c
+	gcc -c qq.c -lSDL -lSDL_image -g
+
